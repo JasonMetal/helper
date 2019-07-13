@@ -6,7 +6,7 @@
  * Time: 14:05
  */
 
-namespace app\helper;
+namespace wangxin\helper;
 
 class RsaHelper
 {

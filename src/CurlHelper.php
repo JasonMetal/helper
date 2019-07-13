@@ -6,7 +6,7 @@
  * Time: 09:43
  */
 
-namespace app\helper;
+namespace wangxin\helper;
 
 class CurlHelper
 {

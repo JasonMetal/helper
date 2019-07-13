@@ -1,0 +1,21 @@
+{
+  "name": "wang-xin/helper",
+  "description": "Utility Class",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "King",
+      "email": "wangxin.king@foxmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "autoload": {
+    "files": [],
+    "psr-4": {
+      "wangxin\\helper\\": "src"
+    }
+  }
+}
