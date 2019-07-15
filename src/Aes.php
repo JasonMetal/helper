@@ -8,7 +8,9 @@
 
 namespace wangxin\helper;
 
-class AesHelper
+use Exception;
+
+class Aes
 {
     /**
      * var string $method 加解密方法，可通过openssl_get_cipher_methods()获得
@@ -39,17 +41,17 @@ class AesHelper
      * @param string $iv iv向量
      * @param int    $options
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct($key, $method = 'aes-256-ecb', $iv = '', $options = 0)
     {
         if (empty($key)) {
-            throw new \Exception('加解密的密钥不能为空');
+            throw new Exception('加解密的密钥不能为空');
         }
         $this->key = $key;
 
         if (!in_array(strtolower($method), openssl_get_cipher_methods())) {
-            throw new \Exception('加密方式选择错误');
+            throw new Exception('加密方式选择错误');
         }
         $this->method = $method;
 

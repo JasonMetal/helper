@@ -8,7 +8,7 @@
 
 namespace wangxin\helper;
 
-class TreeHelper
+class Tree
 {
     public static function tree(array $data, $primaryId = 'id', $parentId = 'pid')
     {

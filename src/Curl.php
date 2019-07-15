@@ -8,19 +8,20 @@
 
 namespace wangxin\helper;
 
-class CurlHelper
+class Curl
 {
     /**
      * request
-     * @author King
      *
-     * @param string $url
-     * @param string $method
-     * @param null   $data
-     * @param int    $timeout
-     * @param array  $header
+     * @param string $url 请求URL
+     * @param string $method 请求方式
+     * @param null   $data 请求数据
+     * @param int    $timeout 超时时间
+     * @param array  $header Header头
      *
      * @return mixed
+     * @author King
+     *
      */
     public static function request($url, $method, $data = null, $timeout = 5, $header = [])
     {
@@ -56,13 +57,14 @@ class CurlHelper
 
     /**
      * get
-     * @author King
      *
-     * @param string $url
-     * @param int    $timeout
-     * @param array  $header
+     * @param string $url 请求URL
+     * @param int    $timeout 超时时间
+     * @param array  $header Header头
      *
      * @return mixed
+     * @author King
+     *
      */
     public static function get($url, $timeout, $header = [])
     {
@@ -71,14 +73,15 @@ class CurlHelper
 
     /**
      * post
-     * @author King
      *
-     * @param string       $url
-     * @param string|array $data
-     * @param int          $timeout
-     * @param array        $header
+     * @param string $url 请求URL
+     * @param array  $data 请求数据
+     * @param int    $timeout 超时时间
+     * @param array  $header Header头
      *
      * @return mixed
+     * @author King
+     *
      */
     public static function post($url, $data, $timeout = 5, $header = [])
     {

@@ -9,9 +9,9 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use wangxin\helper\ArrayHelper;
+use wangxin\helper\Arr;
 
-class ArrayHelpTest extends TestCase
+class ArrTest extends TestCase
 {
     /**
      * testExcept
@@ -22,7 +22,7 @@ class ArrayHelpTest extends TestCase
         $data   = ['a' => '123', 'b' => '456', 'c' => '789'];
         $except = ['a', 'c'];
 
-        $arr = ArrayHelper::except($data, $except);
+        $arr = Arr::except($data, $except);
 
         $this->assertIsArray($arr);
         $this->assertArrayHasKey('b', $arr);

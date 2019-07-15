@@ -8,7 +8,9 @@
 
 namespace wangxin\helper;
 
-class RsaHelper
+use Exception;
+
+class Rsa
 {
     /**
      * 生成签名
@@ -19,13 +21,13 @@ class RsaHelper
      * @param string $private_key
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public static function generateSignature($data, $private_key)
     {
         $private_key_resource = openssl_pkey_get_private($private_key);
         if (!$private_key_resource) {
-            throw new \Exception('私钥格式错误');
+            throw new Exception('私钥格式错误');
         }
 
         openssl_sign($data, $sign, $private_key_resource, OPENSSL_ALGO_SHA256);
@@ -45,13 +47,13 @@ class RsaHelper
      * @param string $public_key
      *
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
     public static function verifySignature($data, $signature, $public_key)
     {
         $public_key_resource = openssl_pkey_get_public($public_key);
         if (!$public_key_resource) {
-            throw new \Exception('公钥格式错误');
+            throw new Exception('公钥格式错误');
         }
 
         $result = (bool)openssl_verify($data, base64_decode($signature), $public_key_resource, OPENSSL_ALGO_SHA256);
@@ -70,13 +72,13 @@ class RsaHelper
      * @param string $private_key
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public static function privateKeyEncrypt($data, $private_key)
     {
         $private_key_resource = openssl_pkey_get_private($private_key);
         if (!$private_key_resource) {
-            throw new \Exception('私钥格式错误');
+            throw new Exception('私钥格式错误');
         }
 
         openssl_private_encrypt($data, $decrypted, $private_key_resource);
@@ -87,20 +89,21 @@ class RsaHelper
     }
 
     /**
-     * privateKeyDecrypt
-     * @author King
+     * 私钥解密数据
      *
      * @param $data
      * @param $private_key
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
+     * @author King
+     *
      */
     public static function privateKeyDecrypt($data, $private_key)
     {
         $private_key_resource = openssl_pkey_get_private($private_key);
         if (!$private_key_resource) {
-            throw new \Exception('私钥格式错误');
+            throw new Exception('私钥格式错误');
         }
 
         openssl_private_decrypt(base64_decode($data), $decrypted, $private_key_resource);
@@ -110,11 +113,21 @@ class RsaHelper
         return $decrypted;
     }
 
+    /**
+     * 公钥加密数据
+     *
+     * @param string $data 要加密的数据
+     * @param string $public_key 公钥
+     *
+     * @return string
+     * @throws Exception
+     * @author King
+     */
     public static function publicKeyEncrypt($data, $public_key)
     {
         $public_key_resource = openssl_pkey_get_public($public_key);
         if (!$public_key_resource) {
-            throw new \Exception('公钥格式错误');
+            throw new Exception('公钥格式错误');
         }
 
         openssl_public_encrypt($data, $decrypted, $public_key_resource);
@@ -133,13 +146,13 @@ class RsaHelper
      * @param string $public_key
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public static function publicKeyDecrypt($data, $public_key)
     {
         $public_key_resource = openssl_pkey_get_public($public_key);
         if (!$public_key_resource) {
-            throw new \Exception('公钥格式错误');
+            throw new Exception('公钥格式错误');
         }
 
         openssl_public_decrypt(base64_decode($data), $decrypted, $public_key_resource);

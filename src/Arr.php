@@ -9,7 +9,7 @@
 namespace wangxin\helper;
 
 
-class ArrayHelper
+class Arr
 {
     /**
      * 获取除指定键数组外的所有给定数组。
